@@ -1,0 +1,17 @@
+Overview
+Stuxnet is a highly sophisticated computer worm discovered in 2010. It is widely believed to be developed jointly by the United States and Israel under a covert operation targeting Iran’s nuclear enrichment program. Stuxnet represented a major paradigm shift: it demonstrated that malware could cause physical destruction to industrial systems.
+
+Infection and Propagation
+Stuxnet spread primarily through removable USB drives and network shares, leveraging multiple zero-day vulnerabilities in Windows. These vulnerabilities enabled the worm to execute without user interaction, escalate privileges, and propagate across local networks. Stuxnet’s design allowed it to remain stealthy, avoiding detection for years.
+
+Target Recognition
+Unlike typical malware, Stuxnet only activated its destructive payload under very specific conditions. It searched for industrial control systems (ICS) operated through Siemens Step7 software and controlling centrifuges at uranium enrichment facilities. If the environment did not match these exact criteria, the worm remained dormant, ensuring minimal collateral damage.
+
+Payload and Sabotage Mechanism
+Once the correct target was identified, Stuxnet injected malicious code into the Programmable Logic Controllers (PLCs) controlling centrifuge speeds. It manipulated the rotational speed—periodically increasing or decreasing it beyond safe limits. These subtle fluctuations caused mechanical degradation and eventual failure of centrifuges. Crucially, Stuxnet simultaneously fed false telemetry data to operators, masking the abnormal behavior.
+
+Stealth Capabilities
+Stuxnet utilized multiple rootkit techniques to hide its presence on both Windows machines and ICS environments. The malware intercepted system calls, concealed modified PLC instructions, and ensured operators saw normal operational values. This level of stealth was unprecedented for malware at the time.
+
+Impact
+Stuxnet successfully destroyed roughly 1,000 centrifuges at the Natanz nuclear facility, delaying Iran’s enrichment program significantly. It marked the first known instance of malware causing physical damage to critical infrastructure. Stuxnet’s discovery reshaped global cybersecurity discourse, highlighting the emergence of cyber warfare capabilities targeting industrial systems.
